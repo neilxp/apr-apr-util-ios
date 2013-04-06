@@ -1,0 +1,111 @@
+9455,9460c9455,9461
+< if ac_fn_c_try_cpp "$LINENO"; then :
+< 
+< else
+<   # Broken: fails on valid input.
+< continue
+< fi
+---
+> # omega
+> #if ac_fn_c_try_cpp "$LINENO"; then :
+> #
+> #else
+> #  # Broken: fails on valid input.
+> #continue
+> #fi
+23336,23354c23337,23356
+< if test "$ac_cv_sizeof_int" = "8"; then
+<     int64_literal='#define APR_INT64_C(val) (val)'
+<     uint64_literal='#define APR_UINT64_C(val) (val##U)'
+<     int64_t_fmt='#define APR_INT64_T_FMT "d"'
+<     uint64_t_fmt='#define APR_UINT64_T_FMT "u"'
+<     uint64_t_hex_fmt='#define APR_UINT64_T_HEX_FMT "x"'
+<     int64_value="int"
+<     long_value=int
+<     int64_strfn="strtoi"
+< elif test "$ac_cv_sizeof_long" = "8"; then
+<     int64_literal='#define APR_INT64_C(val) (val##L)'
+<     uint64_literal='#define APR_UINT64_C(val) (val##UL)'
+<     int64_t_fmt='#define APR_INT64_T_FMT "ld"'
+<     uint64_t_fmt='#define APR_UINT64_T_FMT "lu"'
+<     uint64_t_hex_fmt='#define APR_UINT64_T_HEX_FMT "lx"'
+<     int64_value="long"
+<     long_value=long
+<     int64_strfn="strtol"
+< elif test "$ac_cv_sizeof_long_long" = "8"; then
+---
+> # omega
+> #if test "$ac_cv_sizeof_int" = "8"; then
+> #    int64_literal='#define APR_INT64_C(val) (val)'
+> #    uint64_literal='#define APR_UINT64_C(val) (val##U)'
+> #    int64_t_fmt='#define APR_INT64_T_FMT "d"'
+> #    uint64_t_fmt='#define APR_UINT64_T_FMT "u"'
+> #    uint64_t_hex_fmt='#define APR_UINT64_T_HEX_FMT "x"'
+> #    int64_value="int"
+> #    long_value=int
+> #    int64_strfn="strtoi"
+> #elif test "$ac_cv_sizeof_long" = "8"; then
+> #    int64_literal='#define APR_INT64_C(val) (val##L)'
+> #    uint64_literal='#define APR_UINT64_C(val) (val##UL)'
+> #    int64_t_fmt='#define APR_INT64_T_FMT "ld"'
+> #    uint64_t_fmt='#define APR_UINT64_T_FMT "lu"'
+> #    uint64_t_hex_fmt='#define APR_UINT64_T_HEX_FMT "lx"'
+> #    int64_value="long"
+> #    long_value=long
+> #    int64_strfn="strtol"
+> #elif test "$ac_cv_sizeof_long_long" = "8"; then
+23367,23380c23369,23382
+< elif test "$ac_cv_sizeof_longlong" = "8"; then
+<     int64_literal='#define APR_INT64_C(val) (val##LL)'
+<     uint64_literal='#define APR_UINT64_C(val) (val##ULL)'
+<     int64_t_fmt='#define APR_INT64_T_FMT "qd"'
+<     uint64_t_fmt='#define APR_UINT64_T_FMT "qu"'
+<     uint64_t_hex_fmt='#define APR_UINT64_T_HEX_FMT "qx"'
+<     int64_value="__int64"
+<     long_value="__int64"
+<     int64_strfn="strtoll"
+< else
+<     # int64_literal may be overriden if your compiler thinks you have
+<     # a 64-bit value but APR does not agree.
+<     as_fn_error $? "could not detect a 64-bit integer type" "$LINENO" 5
+< fi
+---
+> #elif test "$ac_cv_sizeof_longlong" = "8"; then
+> #    int64_literal='#define APR_INT64_C(val) (val##LL)'
+> #    uint64_literal='#define APR_UINT64_C(val) (val##ULL)'
+> #    int64_t_fmt='#define APR_INT64_T_FMT "qd"'
+> #    uint64_t_fmt='#define APR_UINT64_T_FMT "qu"'
+> #    uint64_t_hex_fmt='#define APR_UINT64_T_HEX_FMT "qx"'
+> #    int64_value="__int64"
+> #    long_value="__int64"
+> #    int64_strfn="strtoll"
+> #else
+> #    # int64_literal may be overriden if your compiler thinks you have
+> #    # a 64-bit value but APR does not agree.
+> #    as_fn_error $? "could not detect a 64-bit integer type" "$LINENO" 5
+> #fi
+23889,23895c23891,23898
+<     if test "$ac_cv_sizeof_off_t" = "$ac_cv_sizeof_long"; then
+<         off_t_fmt='#define APR_OFF_T_FMT "ld"'
+<         off_t_strfn='strtol'
+<     elif test "$ac_cv_sizeof_off_t" = "$ac_cv_sizeof_int"; then
+<         off_t_fmt='#define APR_OFF_T_FMT "d"'
+<         off_t_strfn='strtoi'
+<     elif test "$ac_cv_sizeof_off_t" = "$ac_cv_sizeof_long_long"; then
+---
+> 	# omega
+>     #if test "$ac_cv_sizeof_off_t" = "$ac_cv_sizeof_long"; then
+>     #    off_t_fmt='#define APR_OFF_T_FMT "ld"'
+>     #    off_t_strfn='strtol'
+>     #elif test "$ac_cv_sizeof_off_t" = "$ac_cv_sizeof_int"; then
+>     #    off_t_fmt='#define APR_OFF_T_FMT "d"'
+>     #    off_t_strfn='strtoi'
+>     #elif test "$ac_cv_sizeof_off_t" = "$ac_cv_sizeof_long_long"; then
+23898,23900c23901,23903
+<     else
+<         as_fn_error $? "could not determine the size of off_t" "$LINENO" 5
+<     fi
+---
+>     #else
+>     #    as_fn_error $? "could not determine the size of off_t" "$LINENO" 5
+>     #fi

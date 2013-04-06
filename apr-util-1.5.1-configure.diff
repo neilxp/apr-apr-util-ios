@@ -1,0 +1,34 @@
+4377,4382c4377,4383
+< if ac_fn_c_try_cpp "$LINENO"; then :
+< 
+< else
+<   # Broken: fails on valid input.
+< continue
+< fi
+---
+> # omega
+> #if ac_fn_c_try_cpp "$LINENO"; then :
+> #
+> #else
+> #  # Broken: fails on valid input.
+> #continue
+> #fi
+4463,4470c4464,4472
+< if $ac_preproc_ok; then :
+< 
+< else
+<   { { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
+< $as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
+< as_fn_error $? "C preprocessor \"$CPP\" fails sanity check
+< See \`config.log' for more details" "$LINENO" 5; }
+< fi
+---
+> #omega 
+> #if $ac_preproc_ok; then :
+> #
+> #else
+> #  { { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
+> #$as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
+> #as_fn_error $? "C preprocessor \"$CPP\" fails sanity check
+> #See \`config.log' for more details" "$LINENO" 5; }
+> #fi

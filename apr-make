@@ -1,0 +1,50 @@
+#! /bin/bash
+
+unset CPATH
+unset C_INCLUDE_PATH
+unset CPLUS_INCLUDE_PATH
+unset OBJC_INCLUDE_PATH
+unset LIBS
+unset DYLD_FALLBACK_LIBRARY_PATH
+unset DYLD_FALLBACK_FRAMEWORK_PATH
+
+export XCODEDIR=`xcode-select -print-path`
+export BUILD_DARWIN_VER=`uname -r`
+export SDKVER="6.1"
+export DEVROOT=$XCODERIR/Platforms/iPhoneOS.platform/Developer
+export SDKROOT="$DEVROOT/SDKs/iPhoneOS$SDKVER.sdk"
+export PKG_CONFIG_PATH=$SDKROOT/SDKs/iPhoneOS$SDKVER.sdk/usr/lib/pkgconfig:$DEVROOT/usr/lib/pkgconfig:/opt/iphone-$SDKVER/lib/pkgconfig
+export PREFIX="/opt/iphone-$SDKVER"
+export AS="$DEVROOT/usr/bin/as"
+export ASCPP="$DEVROOT/usr/bin/as"
+export AR="$DEVROOT/usr/bin/ar"
+export RANLIB="$DEVROOT/usr/bin/ranlib"
+export ARCH="armv7s"
+export CPPFLAGS="-pipe -no-cpp-precomp -I$SDKROOT/usr/lib/gcc/arm-apple-darwin10/4.2.1/include/ -I$SDKROOT/usr/include -I$DEVROOT/usr/include "
+#/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/llvm-gcc-4.2/lib/gcc/arm-apple-darwin10/4.2.1/v7s/libgcc.a
+
+export CFLAGS="-arch $ARCH -std=gnu99 -x c -no-cpp-precomp --sysroot='$SDKROOT' -isystem $SDKROOT/usr/lib/gcc/arm-apple-darwin10/4.2.1/include/ -isystem $SDKROOT/usr/include -isystem $DEVROOT/usr/include " 
+export CXXFLAGS="-arch $ARCH -std=gnu99 -no-cpp-precomp --sysroot='$SDKROOT' -isystem $SDKROOT/usr/lib/gcc/arm-apple-darwin10/4.2.1/include/ -isystem $SDKROOT/usr/include -isystem $DEVROOT/usr/include"
+export LDFLAGS="-isysroot='$SDKROOT' -Xlinker -L$SDKROOT/usr/lib -Xlinker -L$SDKROOT/usr/lib/system -Xlinker -arch -Xlinker $ARCH "
+#export CPP="$DEVROOT/usr/bin/i686-apple-darwin10-llvm-g++-4.2"
+#export CXX="$DEVROOT/usr/bin/i686-apple-darwin10-llvm-g++-4.2"
+export CPP="$DEVROOT/usr/bin/llvm-g++-4.2"
+export CXX=$CPP
+export CC=$XCODEDIR/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang
+export CPP=$CC
+export CXX=$CC
+export LD="$DEVROOT/usr/bin/ld"
+export LD=$CC
+export STRIP="$DEVROOT/usr/bin/strip"
+
+if [ ! \( -d "$DEVROOT" \) ] ; then
+   echo "The iPhone SDK could not be found. Folder \"$DEVROOT\" does not exist."
+   exit 1
+fi
+
+if [ ! \( -d "$SDKROOT" \) ] ; then
+   echo "The iPhone SDK could not be found. Folder \"$SDKROOT\" does not exist."
+   exit 1
+fi
+
+make
